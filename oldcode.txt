@@ -1,0 +1,139 @@
+// // Pathlines
+// let path = [];
+
+
+// /**
+// Description of setup
+// */
+// function setup() {
+//     createCanvas(windowWidth, windowHeight);
+//     for (let i = 0; i < 50; i++) {
+//         path[i] = new Particle();
+//     }
+
+// }
+
+
+// /**
+// Description of draw()
+// */
+// function draw() {
+//     background(35, 97, 180);
+//     noStroke();
+//     for (let i = 0; i < path.length; i++) {
+//         path[i].moveDisplay();
+//         print(path[i].x);
+
+//     }
+
+
+// beginLayer();
+// background(100, 40);
+// let angle = millis() / 1000;
+// let x = map(cos(angle), -1, 1, 15, width - 15);
+// let y = map(sin(1.4 * angle), -1, 1, 15, height - 15);
+// fill(255, 204, 0);
+// noStroke();
+// ellipse(x, y, 25, 35);
+// endLayer();
+
+// translate(200, height - 200);
+// rotate(millis() / 1000);
+// }
+
+// class Particle {
+//     constructor() {
+//         this.x = random(width);
+//         this.y = random(height);
+//         this.w = random(10, 25);
+//         this.speed = 5;
+//     }
+
+//     moveDisplay() {
+//         // background(255, 197, 252);
+//         background(35, 97, 180);
+//         beginLayer();
+//         fill(255, 197, 252);
+//         this.x += this.speed;
+//         this.y += this.speed;
+//         noStroke();
+//         fill(255, 197, 252)
+//         ellipse(this.x, this.y, this.w);
+//         endLayer();
+
+//         // this.x += random(this.speed);
+//         // this.y += random(this.speed);
+//         // ellipse(this.x, this.y, this.w, this.h);
+
+
+//     }
+// }
+
+// // var opacity;
+
+
+// function setup() {
+//     createCanvas(windowWidth, windowHeight);
+// }
+
+// function draw() {
+//     drawingContext.lineWidth = 80;
+//     drawingContext.lineCap = 'round'
+
+//     gradientLine(drawingContext, 60, 60, 300, 380, 'pink', 'white')
+
+// }
+
+// function gradientLine(drawingContext, x1, y1, x2, y2, c1, c2) {
+//     const gradient = drawingContext.createLinearGradient(x1, y1, x2, y2);
+//     gradient.addColorStop(0, c1);
+//     gradient.addColorStop(1, c2);
+//     drawingContext.strokeStyle = gradient;
+
+//     drawingContext.beginPath();
+//     drawingContext.moveTo(x1, y1);
+//     drawingContext.lineTo(x2, y2);
+//     drawingContext.stroke();
+// }
+
+
+
+// function mouseDragged() {
+//     opacity++;
+//     colorMode(HSL, 360);
+//     noStroke();
+//     fill(0, 200, opacity);
+//     ellipse(mouseX, mouseY, 50, 50);
+// }
+
+
+
+        // stroke(339, 200, this.lightness, this.opacity);
+        // strokeCap(ROUND);
+        // strokeWeight(4);
+        // line(this.x, this.y, this.x2, this.y2);
+
+
+
+
+
+    colorMode(RGB, 255);
+    background(35, 97, 200, 60);
+
+
+
+
+/////////////////////
+        // fill(167, 132, 229, 155);
+        // polarEllipses(12, 20 + sin(frameCount / 8) * 5, 20, 20);
+        // fill(230, 166, 203, 110);
+        // polarEllipses(8, 50 + sin(frameCount / 10) * 10, 50, 65);
+        // rotate(frameCount * -0.02);
+        // fill(223, 187, 140, 155);
+        // polarEllipses(6, 10 + sin(frameCount / 20) * 10, 30, 40);
+        // fill(178, 215, 178, 130);
+        // polarEllipses(8, 5 + sin(frameCount / 20) * 5, 20, 50);
+        // fill(238, 175, 170);
+        // polarEllipses(12, 5, 8, 40);
+
+
