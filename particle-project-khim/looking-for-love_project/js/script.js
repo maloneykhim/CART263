@@ -33,7 +33,7 @@ Preload image & SOund
 */
 
 function preload() {
-    img = loadImage('watercolor-texture.png');
+    img = loadImage('watercolor-texture2.png');
     music = loadSound('music.mp3');
 
 }
@@ -103,7 +103,7 @@ class Particle {
         this.opacity = 255; // Opacity of 255
     }
 
-    moveDisplay() {
+    moveDisplay() { // Method for the path particle (using the Layer Library, it creates a line by doing a trail of circles)
         colorMode(RGB, 255); // RGB color mode
         background(120, 124, 218); // Light purple background color
         image(img, 0, 0); // Add texture to background
@@ -205,15 +205,15 @@ class Particle3 {
         this.width++; // Width of ellipse goes up as time goes
         this.height++; // Height of ellipse goes up as time goes
         this.distance++; // Distance of ellipse goes up as time goes
-        fill(167, 132, 229, this.opacity);
+        fill(167, 132, 229, this.opacity); // Fill the following shapes in purple
         polarEllipses(this.number, this.width + sin(frameCount / 5) * 15, this.height, this.distance); // Draw ellipse with oscillation animation
-        fill(230, 166, 203, this.opacity);
+        fill(230, 166, 203, this.opacity); // Fill the following shapes in pink
         polarEllipses(this.number, this.width + sin(frameCount / 10) * 50, this.height, this.distance); // Draw ellipse with oscillation animation
-        fill(223, 187, 140, this.opacity);
+        fill(223, 187, 140, this.opacity); // Fill the following shapes in light yellow
         polarEllipses(this.number, this.width + sin(frameCount / 15) * 10, this.height, this.distance); // Draw ellipse with oscillation animation
-        fill(178, 215, 178, this.opacity);
+        fill(178, 215, 178, this.opacity); // Fill the following shapes in light green
         polarEllipses(this.number, this.width + sin(frameCount / 20) * 5, this.height, this.distance); // Draw ellipse with oscillation animation
-        fill(238, 175, 170, this.opacity);
+        fill(238, 175, 170, this.opacity); // Fill the following shapes in another shade of pink
         polarEllipses(this.number, this.width + sin(frameCount / 10) * 30, this.height, this.distance); // Draw ellipse with oscillation animation
 
 
