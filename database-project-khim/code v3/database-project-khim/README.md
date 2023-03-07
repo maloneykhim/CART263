@@ -22,6 +22,6 @@ Here are some of my inspirations on a moodboard on Figma: https://www.figma.com/
 
 ## Initial sketch
 
-![My initial sketch for my UFO data visualisation](/assets/images/initialsketch.jpg "initialsketch")
+![My initial sketch for my UFO data visualisation](.../assets/images/initialsketch.jpg "initialsketch")
 
 My first idea was to use the shapes of the UFO to make particles across the canvas that was connected by dashed lines. It was abandoned because there were too many shapes for me to code and some of them were hard to define, like a formation or just unknown.

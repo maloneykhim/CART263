@@ -20,12 +20,10 @@ let topColor, bottomColor; // Variable for the gradient colors
 
 let myFont; // Variable for the font
 
-var speech = new p5.Speech(); //
-
 function preload() {
     table = loadTable("assets/ufo-database-v2.csv", "csv", "header");
     myFont = loadFont('assets/clockwiselight.otf');
-}
+} // Preload the database
 
 
 /**
@@ -34,7 +32,7 @@ Description of setup
 function setup() {
     createCanvas(windowWidth, windowHeight); // Canvas takes the size of the screen
 
-    // Midnight sky background
+    // Midnight sky background gradient
     topColor = color('#27274B');
     bottomColor = color('#111232')
     for (let y = 0; y < height; y++) {
@@ -77,43 +75,42 @@ class Particle {
         this.summary = summary;
         this.x = random(width);
         this.y = random(height);
-        this.size = map(this.minute, 0, 58, 0, 75);
-        this.strokeWidth = map(this.hour, 0, 23, 0, 5);
-        this.buildingWidth = map(this.day, 12, 20, 30, 80);
-        this.buildingHeight = map(this.day, 12, 20, 50, 300);
+        this.size = map(this.minute, 0, 58, 0, 75); // Re-maps the minute numbers from one range to another
+        this.strokeWidth = map(this.hour, 0, 23, 0, 5); // Re-maps the hour numbers from one range to another
+        this.buildingWidth = map(this.day, 12, 20, 30, 80); // Re-maps the day numbers from one range to another
+        this.buildingHeight = map(this.day, 12, 20, 50, 300); // Re-maps the day numbers from one range to another
 
     }
 
-    drawBuilding(){
-        rectMode(CENTER);
-        fill('#535E6B');
-        strokeWeight(3);
-        rect(this.x, (windowHeight), this.buildingWidth, this.buildingHeight);
+    drawBuilding(){ // Draw rectangles representing the buildings of a city, their height and width are based on the day the UFOs were seen
+        rectMode(CENTER); // Change the rectangle mode to center
+        fill('#535E6B'); // Make the rectangles grey 
+        strokeWeight(3); // Change the stroke weight to 3
+        rect(this.x, (windowHeight), this.buildingWidth, this.buildingHeight); // Draw buildings with its size having variations depending on the day the UFO was seen
     }
 
-    drawUFO() {
-        noStroke();
-        if (this.shape === 'Triangle' || this.shape === 'Diamond' || this.shape === 'Cross') {
-            fill('#0BFFED');
-            ellipse(this.x, this.y, this.size, (this.size / 4));
-            ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2))));
-            line(this.x, this.y, this.strokeWidth, 10);
-        } else if (this.shape === 'Circle' || this.shape === 'Sphere' || this.shape === 'Oval' || this.shape === 'Disk') {
-            fill('#00FFAF');
-            ellipse(this.x, this.y, this.size, (this.size / 4));
-            ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2))));
-        } else if (this.shape === 'Light' || this.shape === 'Fireball' || this.shape === 'Cigar') {
-            fill('#ABFFE3');
-            ellipse(this.x, this.y, this.size, (this.size / 4));
-            ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2))));
-        } else if (this.shape === 'Teardrop' || this.shape === 'Formation' || this.shape === 'Changing') {
-            fill('#0EAAA9');
-            ellipse(this.x, this.y, this.size, (this.size / 4));
-            ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2))));
-        } else {
-            fill('#1FD7C4');
-            ellipse(this.x, this.y, this.size, (this.size / 4));
-            ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2))));
+    drawUFO() { // Draw UFOs with different size depending on the minute they were seen and different colors depending on their shapes
+        noStroke(); // Remove the stroke
+        if (this.shape === 'Triangle' || this.shape === 'Diamond' || this.shape === 'Cross') { // If the UFO's shape is triangle, diamond or cross...
+            fill('#0BFFED'); // Fill the following ellipses in this color
+            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
+            ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2)))); // Bottom part of the ufo
+        } else if (this.shape === 'Circle' || this.shape === 'Sphere' || this.shape === 'Oval' || this.shape === 'Disk') { // Else if the UFO's shape is circle, sphere, oval or disk...
+            fill('#00FFAF'); // Fill the following ellipses in this color
+            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
+            ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2)))); // Bottom part of the ufo
+        } else if (this.shape === 'Light' || this.shape === 'Fireball' || this.shape === 'Cigar') { // Else if the UFO's shape is light, fireball, or cigar...
+            fill('#ABFFE3'); // Fill the following ellipses in this color
+            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
+            ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2)))); // Bottom part of the ufo
+        } else if (this.shape === 'Teardrop' || this.shape === 'Formation' || this.shape === 'Changing') { // Else if the UFO's shape is teardrop, formation, or changing...
+            fill('#0EAAA9'); // Fill the following ellipses in this color
+            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
+            ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2)))); // Bottom part of the ufo
+        } else { // if the UFO is not any of those shapes...
+            fill('#1FD7C4'); // Fill the following ellipses in this color
+            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
+            ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2)))); // Bottom part of the ufo
         }
     }
 
@@ -124,17 +121,17 @@ class Particle {
         strokeWeight(this.strokeWidth);
         noFill();
         drawingContext.setLineDash([5, 10, 30, 10]); // Create a dashed line pattern
-        ellipse(this.x, this.y, this.ID, this.ID);
+        ellipse(this.x, this.y, this.ID, this.ID); // Draw circles across the canvas
     }
 
     addInfo() {
-        textFont(myFont);
-        textSize(12);
-        fill('#white');
-        noStroke();
-        text(this.ID, this.x - 10, this.y + 10);
+        textFont(myFont); // Change the font to Clockwise Light
+        textSize(12); // Change the font size to 12
+        fill('#white'); // Make text white
+        noStroke(); // Remove the stroke
+        text(this.ID, this.x - 10, this.y + 10); // Write ID number
         textSize(10);
-        text(this.city, this.x - 10, this.y + 25);
+        text(this.city, this.x - 10, this.y + 25); // Write city
         drawingContext.shadowBlur = 12; // Add a glow effect
         drawingContext.shadowColor = color(255); // Make glow effect white
     }
