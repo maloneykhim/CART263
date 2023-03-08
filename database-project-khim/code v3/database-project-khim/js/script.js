@@ -3,11 +3,11 @@ Data Visualisation Project
 Maloney Khim
 
 Database used : National UFO Reporting Center Reports(modified) https://data.world/khturner/national-ufo-reporting-center-reports/workspace/file?filename=nuforc_events.csv
-Libraries used: p5.speech https://idmnyu.github.io/p5.js-speech/
 UFO shape inspiration : https://editor.p5js.org/ray.toal/sketches/MX7qvtpCO
 Glow effect : https://youtu.be/iIWH3IUYHzM
 Gradient background : https://youtu.be/EAY7S1tWbzc
-Font used : https://www.cufonfonts.com/font/clockwise 
+Font used : https://www.cufonfonts.com/font/clockwise
+Dashed line effect: https://editor.p5js.org/squishynotions/sketches/Ax195WTdz 
 
 
 */
@@ -73,8 +73,8 @@ class Particle {
         this.city = city;
         this.shape = shape;
         this.summary = summary;
-        this.x = random(width);
-        this.y = random(height);
+        this.x = random(width); // Randomize the X position according to the width of the canvas
+        this.y = random(height); // Randomize the Y position according to the width of the canvas
         this.size = map(this.minute, 0, 58, 0, 75); // Re-maps the minute numbers from one range to another
         this.strokeWidth = map(this.hour, 0, 23, 0, 5); // Re-maps the hour numbers from one range to another
         this.buildingWidth = map(this.day, 12, 20, 30, 80); // Re-maps the day numbers from one range to another
@@ -86,6 +86,9 @@ class Particle {
         rectMode(CENTER); // Change the rectangle mode to center
         fill('#535E6B'); // Make the rectangles grey 
         strokeWeight(3); // Change the stroke weight to 3
+        stroke('#464F5A'); 
+        drawingContext.shadowBlur = 5; // Add a glow effect
+        drawingContext.setLineDash([0, 0, 0, 0]); // Remove the dashed line pattern
         rect(this.x, (windowHeight), this.buildingWidth, this.buildingHeight); // Draw buildings with its size having variations depending on the day the UFO was seen
     }
 
@@ -93,35 +96,37 @@ class Particle {
         noStroke(); // Remove the stroke
         if (this.shape === 'Triangle' || this.shape === 'Diamond' || this.shape === 'Cross') { // If the UFO's shape is triangle, diamond or cross...
             fill('#0BFFED'); // Fill the following ellipses in this color
-            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
             ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2)))); // Bottom part of the ufo
+            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
         } else if (this.shape === 'Circle' || this.shape === 'Sphere' || this.shape === 'Oval' || this.shape === 'Disk') { // Else if the UFO's shape is circle, sphere, oval or disk...
             fill('#00FFAF'); // Fill the following ellipses in this color
-            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
             ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2)))); // Bottom part of the ufo
+            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
         } else if (this.shape === 'Light' || this.shape === 'Fireball' || this.shape === 'Cigar') { // Else if the UFO's shape is light, fireball, or cigar...
             fill('#ABFFE3'); // Fill the following ellipses in this color
-            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
             ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2)))); // Bottom part of the ufo
+            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
         } else if (this.shape === 'Teardrop' || this.shape === 'Formation' || this.shape === 'Changing') { // Else if the UFO's shape is teardrop, formation, or changing...
             fill('#0EAAA9'); // Fill the following ellipses in this color
-            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
             ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2)))); // Bottom part of the ufo
+            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
         } else { // if the UFO is not any of those shapes...
             fill('#1FD7C4'); // Fill the following ellipses in this color
-            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
             ellipse(this.x, (this.y - (this.size * 0.08)), ((this.size / 4) + (0.25 * (this.size / 2)))); // Bottom part of the ufo
+            ellipse(this.x, this.y, this.size, (this.size / 4)); // Top part of the ufo
         }
     }
 
 
     drawCircle() {
-        colorMode(HSB, 1);
-        stroke(0, 0, 100, 0.5);
-        strokeWeight(this.strokeWidth);
-        noFill();
+        drawingContext.shadowBlur = 0; // Remove a glow effect
+        colorMode(HSB, 1); // Change the color mode to HSB
+        stroke(0, 0, 100, 0.5); // Make the circles white
+        strokeWeight(this.strokeWidth); // Make the stroke weight change depending on the hour the UFO was spot
+        noFill(); // Remove the fill of the circles
         drawingContext.setLineDash([5, 10, 30, 10]); // Create a dashed line pattern
         ellipse(this.x, this.y, this.ID, this.ID); // Draw circles across the canvas
+
     }
 
     addInfo() {
@@ -130,7 +135,7 @@ class Particle {
         fill('#white'); // Make text white
         noStroke(); // Remove the stroke
         text(this.ID, this.x - 10, this.y + 10); // Write ID number
-        textSize(10);
+        textSize(10); // Change the font size to 10
         text(this.city, this.x - 10, this.y + 25); // Write city
         drawingContext.shadowBlur = 12; // Add a glow effect
         drawingContext.shadowColor = color(255); // Make glow effect white

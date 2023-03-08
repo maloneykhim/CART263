@@ -4,17 +4,17 @@ Since I enjoyed my astronomy elective last semester, I decided to pick a databas
 
 In my data visualisation, there is a particle system with UFOs with different size depending on the minute they were seen and different colors depending on their shapes. I also added some random dashed-line circles to represent the random focus that people would have while looking at the sky. They vary in size and thickness depending on the hour the UFOs were seen and their ID numbers. There is also a text with the ID number and the city the UFOs were seen next to these circles. The background is a gradient dark shade of blue to represent the sky. Finally, there are rectangles representing the buildings of a city, their height and width are based on the day the UFOs were seen.
 
-I tried to animate my particles but I just wasn't able to do so for a certain reason so I decided to give up on that.
+I tried to animate my particles but I just wasn't able to do so for a certain reason so I decided to give up on that. I also tried to use the speech library in P5.js to have the summary be voiced but it didn't work either.
 
 
 ## Links
 
 * Database used : National UFO Reporting Center Reports(modified) https://data.world/khturner/national-ufo-reporting-center-reports/workspace/file?filename=nuforc_events.csv
-* Libraries used: p5.speech https://idmnyu.github.io/p5.js-speech/
 * UFO shape inspiration : https://editor.p5js.org/ray.toal/sketches/MX7qvtpCO
 * Glow effect : https://youtu.be/iIWH3IUYHzM
 * Gradient background : https://youtu.be/EAY7S1tWbzc
-* Font used : https://www.cufonfonts.com/font/clockwise 
+* Font used : https://www.cufonfonts.com/font/clockwise
+* Dashed line effect: https://editor.p5js.org/squishynotions/sketches/Ax195WTdz 
 
 ## Inspirations
 
@@ -22,6 +22,6 @@ Here are some of my inspirations on a moodboard on Figma: https://www.figma.com/
 
 ## Initial sketch
 
-![My initial sketch for my UFO data visualisation](.../assets/images/initialsketch.jpg "initialsketch")
+See inside assets/images
 
 My first idea was to use the shapes of the UFO to make particles across the canvas that was connected by dashed lines. It was abandoned because there were too many shapes for me to code and some of them were hard to define, like a formation or just unknown.
